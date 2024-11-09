@@ -8,37 +8,43 @@
   </head>
   <body>
     <div class="app">
-      <div class="head">
-        <div class="current-location">
-          <div class="pin">📍</div>
-          <div class="current-data">
-            <div class="current-city">London, UK</div>
-            <div class="current-time">Friday 21:24</div>
-            <div class="current-date">22 June 2024</div>
+      <div class="head-and-main">
+        <div class="head">
+          <div class="current-location">
+            <div class="pin">📍</div>
+            <div class="current-data">
+              <div class="current-city">London, UK</div>
+              <div class="current-time">Friday 21:24</div>
+              <div class="current-date">22 June 2024</div>
+            </div>
+          </div>
+          <div class="search-form">
+            <form action="">
+              <div>
+                <input type="text" /> <input type="submit" value="🔍" />
+              </div>
+            </form>
           </div>
         </div>
-        <div class="search-form">
-          <form action="">
-            <div><input type="text" /> <input type="submit" /></div>
-          </form>
-        </div>
-      </div>
 
-      <div class="main">
-        <div class="current-forecast">
-          <div class="current-temperature">23<span>C</span></div>
-          <div class="current-weather">Clear Sky</div>
-          <div class="more-info">
-            <button><</button>
-            <p>Max/Min</p>
-            <p>Sunrise/Sunset</p>
-            <p>Humidity/Windspeed</p>
-            <button>></button>
+        <div class="main">
+          <div class="current-forecast">
+            <div class="current-temperature">23<span>C</span></div>
+            <div class="current-weather">Clear Sky</div>
+            <div class="more-info">
+              <button><</button>
+              <p>Max/Min</p>
+              <p>Sunrise/Sunset</p>
+              <p>Humidity/Windspeed</p>
+              <button>></button>
+            </div>
           </div>
         </div>
       </div>
       <div class="forecast">
-        <button>Hourly</button><button>Daily</button>
+        <div class="forecast-interval">
+          <button>Hourly</button><button>Daily</button>
+        </div>
         <div class="future-forecast">
           <button><</button>
           <div class="forcast-box">Mon</div>
