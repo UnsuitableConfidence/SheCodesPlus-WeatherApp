@@ -6,13 +6,15 @@ body {
 }
 
 .head {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 .main {
-    background-color: antiquewhite;
+  background-color: antiquewhite;
+}
+.forecast {
+  background-color: palevioletred;
 }
 
 footer {
-    background-color: greenyellow;
+  background-color: palegreen;
 }
-
