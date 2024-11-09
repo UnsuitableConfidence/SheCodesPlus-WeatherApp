@@ -1,0 +1,18 @@
+body {
+  background-color: orange;
+}
+.app {
+  text-align: center;
+}
+
+.head {
+    background-color: aliceblue;
+}
+.main {
+    background-color: antiquewhite;
+}
+
+footer {
+    background-color: greenyellow;
+}
+

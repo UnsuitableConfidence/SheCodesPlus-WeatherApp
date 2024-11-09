@@ -4,56 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <h1>Weather App</h1>
-    <div class="head">
-        <div>
-    📍 London, UK </br>
-    Friday 21:24 </br>
-    22 June 2024
-    </div>
-<form action="">
-    <div><input type="text">
-    <input type="submit"></div>
-</form>
-    </div>
-    <div class="main">
-        <div class="current">
-        <h1>23C</h1>
-        <h2>Clear Sky</h2>
-        <h3>Max/Min</h3>
-        <h3>Sunrise/Sunset</h3>
-        <h3>humidity/windspeed</h3>
+    <div class="app">
+      <div class="head">
+        <div class="current-location">
+          <div class="pin">📍</div>
+          <div class="current-data">
+            <div class="current-city">London, UK</div>
+            <div class="current-time">Friday 21:24</div>
+            <div class="current-date">22 June 2024</div>
+          </div>
         </div>
-    <button>Hourly</button><button>Daily</button>
-    <div class="forcast-box">Forecast</div>
-    <div class="forcast-box">Forecast</div>
-    <div class="forcast-box">Forecast</div>
-    <div class="forcast-box">Forecast</div>
-    <div class="forcast-box">Forecast</div>
+        <div class="search-form">
+          <form action="">
+            <div><input type="text" /> <input type="submit" /></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="current">
+          <h1>23C</h1>
+          <h2>Clear Sky</h2>
+          <button><</button>
+          <h3>Max/Min</h3>
+          <h3>Sunrise/Sunset</h3>
+          <h3>humidity/windspeed</h3>
+          <button>></button>
+        </div>
+        <button>Hourly</button><button>Daily</button>
+        <div class="forcast-box">Forecast</div>
+        <div class="forcast-box">Forecast</div>
+        <div class="forcast-box">Forecast</div>
+        <div class="forcast-box">Forecast</div>
+        <div class="forcast-box">Forecast</div>
+      </div>
+      <footer>
+        Coded by
+        <a
+          href="https://www.shecodes.io/graduates/142340-rosie-pryor"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Rosie Pryor</a
+        >, is open-sourced on
+        <a
+          href="https://github.com/UnsuitableConfidence/SheCodesPlus-WeatherApp"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+        and hosted on
+        <a
+          href="https://rosiepryor-shecodes-weatherapp.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Netlify</a
+        >.
+      </footer>
     </div>
-    <footer>
-      Coded by
-      <a
-        href="https://www.shecodes.io/graduates/142340-rosie-pryor"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Rosie Pryor</a
-      >, is open-sourced on
-      <a
-        href="https://github.com/UnsuitableConfidence/SheCodesPlus-WeatherApp"
-        target="_blank"
-        rel="noopener noreferrer"
-        >GitHub</a
-      >
-      and hosted on
-      <a
-        href="https://rosiepryor-shecodes-weatherapp.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Netlify</a
-      >.
-    </footer>
   </body>
 </html>
