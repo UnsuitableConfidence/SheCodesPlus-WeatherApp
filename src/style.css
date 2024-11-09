@@ -1,18 +1,45 @@
 body {
   background-color: orange;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .app {
   text-align: center;
 }
 
 .head {
+  display: flex;
+}
+
+.current-location {
+  background-color: palegoldenrod;
+  display: flex;
+}
+.search-form {
   background-color: aliceblue;
 }
+
 .main {
   background-color: antiquewhite;
 }
+
+.more-info {
+  display: flex;
+}
+
+.more-info button {
+  display: flex;
+}
+.more-info p {
+  display: flex;
+}
+
 .forecast {
   background-color: palevioletred;
+}
+
+.future-forecast {
+  display: flex;
 }
 
 footer {
