@@ -72,6 +72,10 @@ function refreshData(response) {
   currentTimeElement.innerHTML = formatTime(timeAndDate);
   currentDateElement.innerHTML = `${timeAndDate.getDate()} ${timeAndDate.getMonth()}, ${timeAndDate.getFullYear()}`;
   //Add the Date formatting
+  //Weather Icon
+  let iconElement = document.querySelector("#weather-icon");
+  let icon = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.icon}">`;
+  iconElement.innerHTML = icon;
 }
 
 function searchCity(city) {
