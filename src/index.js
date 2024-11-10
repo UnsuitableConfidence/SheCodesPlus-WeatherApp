@@ -15,6 +15,17 @@ function formatTime(date) {
   return `${day} ${hour}:${minute}`;
 }
 
+function getOrdinal(date) {
+  if (date === 1 || date === 21 || date === 31) {
+    return "st";
+  } else if (date === 2 || date === 22) {
+    return "nd";
+  } else if (date === 3 || date === 23) {
+    return "rd";
+  } else {
+    return "th";
+  }
+}
 function formatDate(date) {
   let months = [
     "January",
@@ -30,6 +41,11 @@ function formatDate(date) {
     "November",
     "December",
   ];
+  let dateNum = date.getDate();
+  let month = months[date.getMonth()];
+  let year = date.getFullYear();
+  let ordinal = getOrdinal(dateNum);
+  return `${dateNum} <sup>${ordinal}</sup> ${month} ${year}`;
 }
 
 function refreshData(response) {
@@ -45,8 +61,7 @@ function refreshData(response) {
   console.log(response.data.condition.description);
   let currentWeather = response.data.condition.description;
   currentWeatherElement.innerHTML = currentWeather;
-  //MoreInfo
-  //Humidity/Windspeed/Pressure/RealFeel
+  //MoreInfo: Humidity/Windspeed/Pressure/RealFeel
   let realfeelElement = document.querySelector("#realfeel");
   let realfeel = Math.round(response.data.temperature.feels_like);
   realfeelElement.innerHTML = realfeel;
@@ -62,7 +77,7 @@ function refreshData(response) {
   let pressureElement = document.querySelector("#pressure");
   let pressure = response.data.temperature.pressure;
   pressureElement.innerHTML = pressure;
-  //Add units to the HTML
+  // TODO Add units to the HTML
   //Time and Date
   let currentTimeElement = document.querySelector("#current-time");
   let currentDateElement = document.querySelector("#current-date");
@@ -70,8 +85,8 @@ function refreshData(response) {
   console.log(timeAndDate);
   //currentTimeElement.innerHTML = `${timeAndDate.getDay()}, ${timeAndDate.getHours()}:${timeAndDate.getMinutes()}`;
   currentTimeElement.innerHTML = formatTime(timeAndDate);
-  currentDateElement.innerHTML = `${timeAndDate.getDate()} ${timeAndDate.getMonth()}, ${timeAndDate.getFullYear()}`;
-  //Add the Date formatting
+  //  currentDateElement.innerHTML = `${timeAndDate.getDate()} ${timeAndDate.getMonth()}, ${timeAndDate.getFullYear()}`;
+  currentDateElement.innerHTML = formatDate(timeAndDate);
   //Weather Icon
   let iconElement = document.querySelector("#weather-icon");
   let icon = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.icon}">`;
@@ -99,3 +114,12 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("london");
+
+//TODO Add units to MoreInfo
+//TODO format forward and back buttons on MoreInfo
+//TODO Forecast
+//TODO Hourly/Daily forecast
+//TODO forward and back buttons on forecast
+//TODO Add time-based colour for background
+//TODO Add overlay for icon/background
+//TODO superscript for temps/date
