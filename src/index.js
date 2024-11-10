@@ -1,3 +1,37 @@
+function formatTime(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  let hour = date.getHours().toString().padStart(2, "0");
+  let minute = date.getMinutes().toString().padStart(2, "0");
+
+  return `${day} ${hour}:${minute}`;
+}
+
+function formatDate(date) {
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+}
+
 function refreshData(response) {
   //Current temperature
   let currentTemperatureElement = document.querySelector(
@@ -29,6 +63,15 @@ function refreshData(response) {
   let pressure = response.data.temperature.pressure;
   pressureElement.innerHTML = pressure;
   //Add units to the HTML
+  //Time and Date
+  let currentTimeElement = document.querySelector("#current-time");
+  let currentDateElement = document.querySelector("#current-date");
+  let timeAndDate = new Date(response.data.time * 1000);
+  console.log(timeAndDate);
+  //currentTimeElement.innerHTML = `${timeAndDate.getDay()}, ${timeAndDate.getHours()}:${timeAndDate.getMinutes()}`;
+  currentTimeElement.innerHTML = formatTime(timeAndDate);
+  currentDateElement.innerHTML = `${timeAndDate.getDate()} ${timeAndDate.getMonth()}, ${timeAndDate.getFullYear()}`;
+  //Add the Date formatting
 }
 
 function searchCity(city) {
