@@ -1,0 +1,24 @@
+{
+    "city": "London",
+    "country": "United Kingdom of Great Britain and Northern Ireland",
+    "coordinates": {
+        "longitude": -0.1276474,
+        "latitude": 51.5073219
+    },
+    "condition": {
+        "description": "overcast clouds",
+        "icon_url": "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png",
+        "icon": "broken-clouds-day"
+    },
+    "temperature": {
+        "current": 10.36,
+        "humidity": 88,
+        "feels_like": 9.75,
+        "pressure": 1028
+    },
+    "wind": {
+        "speed": 2.57,
+        "degree": 230
+    },
+    "time": 1731246233
+}
