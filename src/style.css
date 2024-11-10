@@ -95,7 +95,7 @@ body {
   margin-top: 100px;
 }
 
-.current-temperature span {
+.current-temperature #unit {
   font-size: 0.6em;
   vertical-align: super;
 }
