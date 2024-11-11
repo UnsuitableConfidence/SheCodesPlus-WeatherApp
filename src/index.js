@@ -77,7 +77,6 @@ function refreshData(response) {
   let pressureElement = document.querySelector("#pressure");
   let pressure = response.data.temperature.pressure;
   pressureElement.innerHTML = pressure;
-  // TODO Add units to the HTML
   //Time and Date
   let currentTimeElement = document.querySelector("#current-time");
   let currentDateElement = document.querySelector("#current-date");
@@ -115,11 +114,10 @@ searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("london");
 
-//TODO Add units to MoreInfo
+//TODO Add unit change button
 //TODO format forward and back buttons on MoreInfo
 //TODO Forecast
 //TODO Hourly/Daily forecast
 //TODO forward and back buttons on forecast
 //TODO Add time-based colour for background
 //TODO Add overlay for icon/background
-//TODO superscript for temps/date
