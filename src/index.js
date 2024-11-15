@@ -90,12 +90,14 @@ function refreshData(response) {
   let iconElement = document.querySelector("#weather-icon");
   let icon = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.icon}">`;
   iconElement.innerHTML = icon;
+
+  getDailyForecast(response.data.city);
 }
 
 function searchCity(city) {
   let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
   let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  //update so can select unit
+  //TODO update so can select unit
   axios.get(apiURL).then(refreshData);
   console.log(apiURL);
 }
@@ -109,13 +111,16 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayDailyForecast() {
+function displayDailyForecast(response) {
+  console.lof(response.data);
   let forecastDaily = document.querySelector("#forecast-boxes-daily");
   let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = "";
 
-  forecastDays.forEach(function(day){
-      forecastHTML = forecastHTML + `<div class="forecast-box-daily">
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="forecast-box-daily">
             <div class=forecast-daily-day>${day}</div>
             <div class="forecast-daily-icon">⛅</div>
             <div class="forecast-daily-temp">
@@ -123,17 +128,22 @@ function displayDailyForecast() {
               <div class="forecast-daily-min">18°C</div>
           </div>
           </div>`;
-  })
+  });
   forecastDaily.innerHTML = forecastHTML;
+}
+
+function getDailyForecast(city) {
+  let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  //TODO update so can select unit
+  axios.get(apiURL).then(displayDailyForecast);
 }
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("london");
-
 displayDailyForecast();
-
 
 //TODO Add unit change button
 //TODO format forward and back buttons on MoreInfo
