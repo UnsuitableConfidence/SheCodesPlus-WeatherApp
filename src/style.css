@@ -183,15 +183,41 @@ body {
   transition: color 0.3s;
 }
 
-.forecast .forcast-box {
+.forecast .forecast-box-daily {
   background-color: #eef2f7;
   padding: 10px 15px;
-  width: 50px;
+  margin: 0 5px;
+  width: 55px;
   border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   font-size: 0.85em;
-  color: #333;
+  color: #777;
   text-align: center;
+}
+.forecast-boxes-daily {
+  display: flex;
+  justify-content: space-around;
+}
+.forecast-daily-day {
+  font-size: 20px;
+}
+
+.forecast-daily-icon {
+  /*TODO add formatting to icon */
+  font-size: 38px;
+}
+.forecast-daily-temp {
+  font-size: 15px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.forecast-daily-max {
+  color: #4a90e2;
+  padding: 0 10px;
+}
+.forecast-daily-min {
+  color: #85b0e2;
+  padding: 0 10px;
 }
 
 /* Footer */
@@ -199,6 +225,7 @@ footer {
   font-size: 0.8em;
   color: #666;
   padding-top: 20px;
+  text-align: center;
 }
 
 footer a {
