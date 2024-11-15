@@ -48,6 +48,35 @@ function formatDate(date) {
   return `${dateNum} <sup>${ordinal}</sup> ${month} ${year}`;
 }
 
+function displayDailyForecast(response) {
+  console.log(response.data);
+
+  let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHTML = "";
+
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="forecast-box-daily">
+            <div class=forecast-daily-day>${day}</div>
+            <div class="forecast-daily-icon">⛅</div>
+            <div class="forecast-daily-temp">
+              <div class="forecast-daily-max">22°C</div>
+              <div class="forecast-daily-min">18°C</div>
+          </div>
+          </div>`;
+  });
+  let forecastDaily = document.querySelector("#forecast-boxes-daily");
+  forecastDaily.innerHTML = forecastHTML;
+}
+
+function getDailyForecast(city) {
+  let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayDailyForecast);
+  //TODO update so can select unit
+}
+
 function refreshData(response) {
   //Current temperature
   let currentTemperatureElement = document.querySelector(
@@ -111,39 +140,10 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayDailyForecast(response) {
-  console.lof(response.data);
-  let forecastDaily = document.querySelector("#forecast-boxes-daily");
-  let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  let forecastHTML = "";
-
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="forecast-box-daily">
-            <div class=forecast-daily-day>${day}</div>
-            <div class="forecast-daily-icon">⛅</div>
-            <div class="forecast-daily-temp">
-              <div class="forecast-daily-max">22°C</div>
-              <div class="forecast-daily-min">18°C</div>
-          </div>
-          </div>`;
-  });
-  forecastDaily.innerHTML = forecastHTML;
-}
-
-function getDailyForecast(city) {
-  let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  //TODO update so can select unit
-  axios.get(apiURL).then(displayDailyForecast);
-}
-
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("london");
-displayDailyForecast();
 
 //TODO Add unit change button
 //TODO format forward and back buttons on MoreInfo
