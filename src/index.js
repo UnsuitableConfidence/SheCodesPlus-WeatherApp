@@ -109,20 +109,31 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayDailyForecast() {
+  let forecastDaily = document.querySelector("#forecast-boxes-daily");
+  let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHTML = "";
+
+  forecastDays.forEach(function(day){
+      forecastHTML = forecastHTML + `<div class="forecast-box-daily">
+            <div class=forecast-daily-day>${day}</div>
+            <div class="forecast-daily-icon">⛅</div>
+            <div class="forecast-daily-temp">
+              <div class="forecast-daily-max">22°C</div>
+              <div class="forecast-daily-min">18°C</div>
+          </div>
+          </div>`;
+  })
+  forecastDaily.innerHTML = forecastHTML;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("london");
 
-let forecastDaily = document.querySelector("#forecast-boxes-daily");
-forecastDaily.innerHTML = `<div class="forecast-box-daily">
-            <div class=forecast-daily-day id="forecast-daily-day">Mon</div>
-            <div class="forecast-daily-icon" id="forecast-daily-icon">⛅</div>
-            <div class="forecast-daily-temp">
-              <div class="forecast-daily-max" id="forecast-daily-max">22°C</div>
-              <div class="forecast-daily-min" id="forecast-daily-min">18°C</div>
-          </div>
-          </div>`;
+displayDailyForecast();
+
 
 //TODO Add unit change button
 //TODO format forward and back buttons on MoreInfo
