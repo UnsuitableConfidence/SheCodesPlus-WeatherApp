@@ -85,8 +85,7 @@ function displayDailyForecast(response) {
 }
 
 function getDailyForecast(city) {
-  let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiURL).then(displayDailyForecast);
   //TODO update so can select unit
 }
@@ -138,12 +137,10 @@ function refreshData(response) {
 }
 
 function searchCity(city) {
-  let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
-  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   //TODO update so can select unit
   axios.get(apiURL).then(refreshData);
   console.log(apiURL);
-  function searchCity(city) {}
 }
 
 function searchSubmit(event) {
@@ -153,12 +150,29 @@ function searchSubmit(event) {
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = searchInput.value;
   searchCity(searchInput.value);
+
+  lastSearchedCity = searchInput.value;
 }
+
+//let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
+let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
+let units = "metric";
+let lastSearchedCity = "london";
+
+function toggleUnit(event) {
+  event.preventDefault();
+  units = units === "metric" ? "imperial" : "metric";
+  unitToggle.innerHTML = units === "metric" ? "C/F" : "F/C";
+  searchCity(lastSearchedCity);
+}
+
+let unitToggle = document.querySelector("#unit-toggle");
+unitToggle.addEventListener("click", toggleUnit);
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
-searchCity("london");
+searchCity(lastSearchedCity);
 
 //TODO Add unit change button
 //TODO format forward and back buttons on MoreInfo
