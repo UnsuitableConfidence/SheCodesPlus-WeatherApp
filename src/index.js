@@ -48,23 +48,37 @@ function formatDate(date) {
   return `${dateNum} <sup>${ordinal}</sup> ${month} ${year}`;
 }
 
+function formatForecastDay(forecastDate) {
+  let date = new Date(forecastDate * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function displayDailyForecast(response) {
   console.log(response.data);
 
-  let forecastDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = "";
 
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="forecast-box-daily">
-            <div class=forecast-daily-day>${day}</div>
-            <div class="forecast-daily-icon">⛅</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="forecast-box-daily">
+            <div class=forecast-daily-day>${formatForecastDay(day.time)}</div>
+            <div><img src="${
+              day.condition.icon_url
+            }" class="forecast-daily-icon"/></div>
             <div class="forecast-daily-temp">
-              <div class="forecast-daily-max">22°C</div>
-              <div class="forecast-daily-min">18°C</div>
+              <div class="forecast-daily-max">${Math.round(
+                day.temperature.maximum
+              )}<sup id="unit-main">°C</sup></div>
+              <div class="forecast-daily-min">${Math.round(
+                day.temperature.minimum
+              )}<sup id="unit-main">°C</sup></div>
           </div>
           </div>`;
+    }
   });
   let forecastDaily = document.querySelector("#forecast-boxes-daily");
   forecastDaily.innerHTML = forecastHTML;
@@ -129,6 +143,7 @@ function searchCity(city) {
   //TODO update so can select unit
   axios.get(apiURL).then(refreshData);
   console.log(apiURL);
+  function searchCity(city) {}
 }
 
 function searchSubmit(event) {
@@ -149,6 +164,7 @@ searchCity("london");
 //TODO format forward and back buttons on MoreInfo
 //TODO Forecast
 //TODO Hourly/Daily forecast
+//TODO reformat icons for forecast
 //TODO forward and back buttons on forecast
 //TODO Add time-based colour for background
 //TODO Add overlay for icon/background
