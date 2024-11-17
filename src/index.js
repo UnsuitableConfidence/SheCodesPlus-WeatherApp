@@ -154,12 +154,12 @@ function searchSubmit(event) {
   lastSearchedCity = searchInput.value;
 }
 
-//let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
-let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
+let apiKey = "2302c5a95dc704b0f5a33b6ffd9o3dta";
+//let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
 let units = "metric";
 let lastSearchedCity = "london";
 
-function toggleUnit(event) {
+/*function toggleUnit(event) {
   event.preventDefault();
   units = units === "metric" ? "imperial" : "metric";
   unitToggle.innerHTML = units === "metric" ? "C/F" : "F/C";
@@ -167,7 +167,7 @@ function toggleUnit(event) {
 }
 
 let unitToggle = document.querySelector("#unit-toggle");
-unitToggle.addEventListener("click", toggleUnit);
+unitToggle.addEventListener("click", toggleUnit);*/
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);

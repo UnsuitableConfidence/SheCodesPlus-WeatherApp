@@ -204,7 +204,7 @@ body {
 
 .forecast-daily-icon {
   /*TODO add formatting to icon */
-  font-size: 38px;
+  width: 60px;
 }
 .forecast-daily-temp {
   font-size: 15px;
